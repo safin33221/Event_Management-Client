@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hero = () => {
     return (
-        <section className="relative bg-cover bg-center bg-no-repeat h-[90vh] flex items-center justify-center text-white" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1549921296-3a6b04f7251d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')` }}>
+        <section className="relative bg-cover bg-center bg-no-repeat h-[70vh] flex items-center justify-center text-white" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1549921296-3a6b04f7251d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')` }}>
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/60 z-0" />
 

@@ -43,10 +43,10 @@ const Navbar = () => {
 
                 {/* Profile, login, and register */}
                 <div>
-                    <div className='flex items-center gap-3'>
-                        <button>Login</button>
+                    <div className='flex items-center gap-3 '>
+                        <NavLink to={`/auth/login`} className='text-blue-600 font-bold'>Login</NavLink>
                         <span>|</span>
-                        <button>Register</button>
+                        <NavLink to={'/auth/register'} className='text-blue-600 font-bold'>Register</NavLink>
                     </div>
                 </div>
             </div>

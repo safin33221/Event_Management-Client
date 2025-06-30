@@ -1,17 +1,21 @@
 import React from 'react';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+
 import { Link } from 'react-router';
 
 const LoginForm = () => {
-    const handleSubmit = () => {
-
-    }
+    const {
+        register,
+        handleSubmit,
+     
+    } = useForm()
+    const onSubmit = (data) => console.log(data)
     return (
         <div>
 
             <div className="bg-white/10 min-w-md backdrop-blur-md p-8 rounded-xl shadow-xl w-full max-w-md">
                 <h2 className="text-2xl font-bold text-white mb-6 text-center">Login Now</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
 
                     <div>
@@ -20,7 +24,7 @@ const LoginForm = () => {
                             type="email"
                             name="email"
                             placeholder="you@example.com"
-
+                            {...register("email", { required: true })}
                             className="w-full p-3 rounded-md bg-white/70 text-black focus:outline-none focus:ring-2 focus:ring-indigo-400"
                             required
                         />

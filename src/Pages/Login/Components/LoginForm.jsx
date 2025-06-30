@@ -1,5 +1,8 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 import { Link } from 'react-router';
 
@@ -7,9 +10,18 @@ const LoginForm = () => {
     const {
         register,
         handleSubmit,
-     
+
     } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = async (data) => {
+        try {
+            const res = await axios.post('http://localhost:5000/api/login', data)
+            localStorage.setItem("token", res.data.token);
+           
+        } catch (error) {
+       
+            toast.error(error.response.data.message)
+        }
+    }
     return (
         <div>
 
@@ -36,7 +48,7 @@ const LoginForm = () => {
                             type="password"
                             name="password"
                             placeholder="Your password"
-
+                            {...register("password", { required: true })}
                             className="w-full p-3 rounded-md bg-white/70 text-black focus:outline-none focus:ring-2 focus:ring-indigo-400"
                             required
                         />
@@ -53,6 +65,10 @@ const LoginForm = () => {
                 </form>
                 <p className='py-2'>Don't Have any account <Link to={`/auth/register`} className='text-blue-500 underline cursor-pointer'>Register here</Link></p>
             </div>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
         </div>
     );
 };
